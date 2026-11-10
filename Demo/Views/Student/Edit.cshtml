@@ -1,0 +1,46 @@
+﻿@model Demo.Models.Student
+
+@{
+    ViewData["Title"] = "Edit Student";
+}
+
+<div class="container mt-4">
+    <h2>Edit Student Details</h2>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Edit" method="post">
+
+                <!-- Hidden field zaroori hai taaki pata chale kis ID ko update karna hai -->
+                <input type="hidden" asp-for="Id" />
+
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Age" class="control-label"></label>
+                    <input type="number" asp-for="Age" value="@Model.Age" class="form-control" />
+                    <span asp-validation-for="Age" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Update" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

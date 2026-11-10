@@ -1,0 +1,44 @@
+﻿@model Demo.Models.Student
+
+@{
+    ViewData["Title"] = "Add Student";
+}
+
+<div class="container mt-4">
+    <h2>Add New Student</h2>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Create" method="post">
+
+                <!-- Validation Summary (Agar koi error hoga toh yahan dikhega) -->
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Name" class="control-label font-weight-bold"></label>
+                    <input asp-for="Name" class="form-control" placeholder="Enter student name" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Age" class="control-label font-weight-bold"></label>
+                    <input asp-for="Age" class="form-control" placeholder="Enter age" />
+                    <span asp-validation-for="Age" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-success" />
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
